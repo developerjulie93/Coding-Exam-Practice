@@ -31,15 +31,24 @@ function jumpingOnClouds(c) {
 }
 
 function main() {
-    const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
 
     const n = parseInt(readLine(), 10);
-
     const c = readLine().split(' ').map(cTemp => parseInt(cTemp, 10));
 
-    let result = jumpingOnClouds(c);
-
-    ws.write(result + "\n");
-
-    ws.end();
+    let check = 0;
+    let checkZeroNum = 0;
+    for(let num of c){
+        if(num == 0){
+            check++;
+            checkZeroNum++;
+            if(checkZeroNum == 3){
+                check--;
+                checkZeroNum = 1;
+            }
+        }
+        if(num == 1){
+            checkZeroNum = 0;
+        }
+    }
+    console.log(check-1);
 }
