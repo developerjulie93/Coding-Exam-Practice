@@ -25,21 +25,53 @@ function readLine() {
 }
 
 // Complete the repeatedString function below.
-function repeatedString(s, n) {
 
-
-}
 
 function main() {
-    const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
 
     const s = readLine();
 
     const n = parseInt(readLine(), 10);
 
-    let result = repeatedString(s, n);
+    let numOfString = 0;
+    let numOfA = 0;
+    let arr = [];
 
-    ws.write(result + "\n");
+    for(let elmn of s){
+        numOfString++;
+        
+        if(elmn === 'a'){
+            numOfA++;
+        }
+    }
 
-    ws.end();
+    let divide = parseInt(n/numOfString);
+    let remaining = n%numOfString;
+
+    let temp = [];
+    for(let i=0; i<s.length; i++){
+        arr[i] = s[i];
+        temp[i] = s[i];
+    }
+
+    for(let i=0; i<divide-1; i++){
+        arr = arr.concat(temp);
+    }
+    let add = [];
+    if(remaining > 0){
+        for(let i=0; i<remaining; i++){
+            add[i] = arr[i];
+        }
+        arr = arr.concat(add);  
+    }
+
+    let totalNumOfA = 0;
+    for(let elmn of arr){
+        if(elmn === 'a'){
+            totalNumOfA++;
+        }
+    }
+
+    console.log(totalNumOfA);
 }
+
