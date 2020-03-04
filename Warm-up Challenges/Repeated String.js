@@ -35,43 +35,31 @@ function main() {
 
     let numOfString = 0;
     let numOfA = 0;
-    let arr = [];
 
     for(let elmn of s){
         numOfString++;
-        
         if(elmn === 'a'){
             numOfA++;
         }
     }
-
+    
+    let arr = [];
     let divide = parseInt(n/numOfString);
     let remaining = n%numOfString;
 
-    let temp = [];
     for(let i=0; i<s.length; i++){
         arr[i] = s[i];
-        temp[i] = s[i];
     }
-
-    for(let i=0; i<divide-1; i++){
-        arr = arr.concat(temp);
-    }
-    let add = [];
+    let plus = 0;
     if(remaining > 0){
-        for(let i=0; i<remaining; i++){
-            add[i] = arr[i];
-        }
-        arr = arr.concat(add);  
-    }
-
-    let totalNumOfA = 0;
-    for(let elmn of arr){
-        if(elmn === 'a'){
-            totalNumOfA++;
+        arr = arr.slice(0, remaining);
+        for(let elmn of arr){
+            if(elmn === 'a'){
+                plus++;
+            }
         }
     }
-
+    let totalNumOfA = divide * numOfA + plus; 
     console.log(totalNumOfA);
-}
 
+}
