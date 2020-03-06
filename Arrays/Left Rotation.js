@@ -39,15 +39,11 @@ function main() {
     const d = parseInt(nd[1], 10);
 
     const a = readLine().split(' ').map(aTemp => parseInt(aTemp, 10));
-    let ar = a;
-
-    let arr = [];
-    for(let i=0; i<d; i++){
-        arr = ar.slice(1,ar.length);
-        arr.push(ar[0]);
-        ar = arr;
-    }
-   
-       console.log(arr.join(' '));
     
+    let arr1 = a.slice(0,d);
+    let arr2 = a.slice(d,a.length);
+    
+    arr2 = arr2.concat(arr1);
+
+    console.log(arr2.join(' '));
 }
