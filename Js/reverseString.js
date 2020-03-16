@@ -27,6 +27,12 @@ function readLine() {
  * Use console.log() to print to stdout.
  */
 function reverseString(s) {
-    
+    try{
+        let reverseS = s.split('').reverse().join('');
+        console.log(reverseS);
+    }catch(e){
+        console.log(e.message);
+        console.log(s);
+    }
 }
 
